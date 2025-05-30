@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>MAXICAR</title>
+    
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <div class="header">
+    <div class="contenedor">
+        <img src="images - copia/logo.png" class="logo"> 
+    </div>
+</div>
+<br></br>
+
+    <section class="bienvenida">
+        <h1>¡Bienvenido!</h1>
+        <p>Le ofrecemos unos vehiculos de alta calidad con los mejores precios y un servicio excelente y por supuesto garantias.</p>
+        <p>Hecho por Citlaly Yoselin Alvarado Ortiz.</p>
+    </section>
+
+ <center>
+<button class="info-boton" onclick="window.location.href='catalogo.html'">
+    <img src="images - copia/car-solid.svg">
+    <span>Catalogo</span>
+</button>
+
+<button class="info-boton" onclick="mostrarInfo('En Maxicar, no solo te ofrecemos los mejores vehículos, sino también una experiencia completa con servicios diseñados para brindarte confianza, comodidad y seguridad en cada kilómetro que recorras. Te ofrecemos mantenimiento y reparaciones para tu vehículo siempre en las mejores condiciones.')">
+    <img src="images - copia/wrench-solid.svg">
+    <span>Servicios</span>
+</button>
+
+<button class="info-boton" onclick="mostrarInfo('Garantía Extendida, Protege tu inversión con nuestros planes de garantía que cubren desde el motor hasta los sistemas eléctricos. Conduce con tranquilidad sabiendo que estás respaldado.')">
+    <img src="images - copia/credit-card-solid.svg">
+    <span>Garantías</span>
+</button>
+
+<button class="info-boton" onclick="mostrarInfo('Nuestro equipo está listo para asesorarte en todo momento.  📞 Numero de telefono: 664 8940 778, 📧 Correo: Maxicar890@gmail.com')">
+    <img src="images - copia/phone-solid.svg">
+    <span>Contacto</span>
+</button>
+
+
+<button class="info-boton" onclick="mostrarInfo('Descuentos especiales: Ofertas del 10%, 15% o más en ciertos modelos. Bonos de mantenimiento: Primeros servicios gratis o descuentos en mantenimiento. Accesorios gratis: Regalo de tapetes, polarizados o garantía extendida. Promociones por temporada: Descuentos en verano, Black Friday o fin de año.')">
+    <img src="images - copia/percent-solid.svg">
+    <span>Promociones</span>
+</button>
+
+<button class="info-boton" onclick="mostrarInfo('Maxicar fue planeada hace 2 años por Yoselin ortiz, una apasionada de los autos que decidió crear un lugar donde los clientes pudieran encontrar vehículos de calidad y un servicio cercano. Yoselin decidio dar el paso y creo una pagina web para encontrar a esos clientes apasionados, Maxicar se ha destacado por ofrecer no solo autos, sino una experiencia de compra única, con atención personalizada y un compromiso con la satisfacción del cliente. Maxicar amplió su oferta, incorporando marcas como Toyota, Ford, Nissan y Jeep, y abriendo su propio taller de servicio para ofrecer mantenimiento y reparaciones. Hoy en día, Maxicar no es tan conocida pero ofrece confianza, calidad y servicio excepcional.')">
+    <img src="images - copia/book-solid.svg">
+    <span>Hitoria</span>
+</button>
+
+<br></br>
+<h1>¡Lo mas vendido!</h1>
+
+<div id="info-box" class="info-box" style="display: none;">
+    <span id="close-btn" onclick="cerrarInfo()">&times;</span>
+    <p id="info-text"></p>
+</div>
+
+<div id="info-box" class="info-box" style="display: none;"></div>
+<script>
+function mostrarInfo(mensaje) {
+    var infoBox = document.getElementById("info-box");
+    var infoText = document.getElementById("info-text");
+    infoText.innerText = mensaje;
+    infoBox.style.display = "flex";
+}
+
+function cerrarInfo() {
+    document.getElementById("info-box").style.display = "none";
+}
+</script>
+<br></br>
+
+<div class="seleccion-imagenes">
+    <div class="imagen" onclick="mostrarDetalles('car1')">
+        <img src="images - copia/j1.png" alt="">
+        <h3>Jeep Wrangler</h3>
+    </div>
+    <div class="imagen" onclick="mostrarDetalles('car2')">
+        <img src="images - copia/j32.png" alt="">
+         <h3>Mini Cooper</h3>
+    </div>
+    <div class="imagen" onclick="mostrarDetalles('car3')">
+        <img src="images - copia/j25.png" alt="">
+         <h3>Peuge</h3>
+    </div>
+    <div class="imagen" onclick="mostrarDetalles('car4')">
+        <img src="images - copia/j28.png" alt="">
+         <h3>Audi A4</h3>
+    </div>
+    <div class="imagen" onclick="mostrarDetalles('car5')">
+        <img src="images - copia/j5.png" alt="">
+         <h3>Jeep Gladiator</h3>
+    </div>
+</div>
+<br></br>
+  
+
+    <section class="testimonios">
+        <h2>Comentarios</h2>
+        <div class="testimonio">
+            <img src="images - copia/persona1.png" alt="Persona 1">
+            <p>“MaxiCar me ayudó a encontrar el auto perfecto. ¡Recomendado!”</p>
+        </div>
+        <div class="testimonio">
+            <img src="images - copia/persona3.png" alt="Persona 2">
+            <p>“Excelente servicio y atención. Compré mi auto con total confianza.”</p>
+        </div>
+        <div class="testimonio">
+            <img src="images - copia/persona2.png" alt="Persona 3">
+            <p>"Me encantó la atención al cliente, resolvieron todas mis dudas."</p>
+        </div>
+        <div class="testimonio">
+            <img src="images - copia/persona4.png" alt="Persona 4">
+            <p>"La página es muy fácil de usar. Pude encontrar toda la información." </p>
+        </div>
+    </section>
+            </nav>
+            <br></br>
+            <br></br>
+            <div class="redes"> 
+    <a href="https://www.tiktok.com/@yossealv3?lang=es" target="_blank">
+        <img src="images - copia/tiktok.png" alt="Tiktok" class="redes-icono"> Tik Tok
+    </a>
+    <a href="https://www.instagram.com/ortiz_8y8/" target="_blank">
+        <img src="images - copia/instagram.png" alt="Instagram" class="redes-icono"> Instagram
+    </a>
+    <a href="https://x.com/MAXICAR880" target="_blank">
+        <img src="images - copia/X.png" alt="X" class="redes-icono"> X
+    </a>
+</div>
+</div>
+</body>
+</html>
+

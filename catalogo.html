@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" type="text/css" href="style.css"/>
+  <title>MAXICAR</title>
+</head>
+<body>
+
+<!-- Modal de compra -->
+<div id="modal-compra" class="modal">
+  <div class="modal-contenido">
+    <span class="cerrar">&times;</span>
+    <form id="formulario-compra">
+      <h2>Formulario de Compra</h2>
+      <label>Ciudad o Estado:</label>
+      <input type="text" name="ciudad" required />
+      <label>Colonia:</label>
+      <input type="text" name="colonia" required />
+      <label>Casa:</label>
+      <input type="text" name="casa" required />
+      <label>Número de Teléfono:</label>
+      <input type="tel" name="telefono" required />
+      <label>Número de Tarjeta:</label>
+      <input type="text" name="tarjeta" pattern="\d{16}" maxlength="16" required placeholder="16 dígitos" />
+      <label>PIN:</label>
+      <input type="password" name="pin" pattern="\d{4}" maxlength="4" required placeholder="4 dígitos" />
+      <button type="submit">Confirmar Compra</button>
+    </form>
+  </div>
+</div>
+
+<!-- Encabezado con logo -->
+<div class="header">
+  <div class="contenedor">
+    <img src="images - copia/logo.png" class="logo" alt="MAXICAR logo" />
+  </div>
+</div>
+
+<!-- Bienvenida -->
+<section class="bienvenida">
+  <h1>¡Bienvenido!</h1>
+  <p>Aquí encontrará las categorías más vendidas</p>
+  <p>Hecho por Citlaly Yoselin Alvarado Ortiz.</p>
+</section>
+
+<!-- Selección de categoría -->
+<div class="contenedor">
+  <h4>Elija una categoría</h4>
+</div>
+
+<div class="categorias-grid">
+  <div class="categoria" data-categoria="familiar">
+    <img src="images - copia/carro5.png" alt="Familiar" />
+    <p>Familiar</p>
+  </div>
+  <div class="categoria" data-categoria="furgoneta">
+    <img src="images - copia/carro4.png" alt="Furgoneta" />
+    <p>Furgoneta</p>
+  </div>
+  <div class="categoria" data-categoria="todoterreno">
+    <img src="images - copia/carro3.png" alt="Todoterreno" />
+    <p>Todoterreno</p>
+  </div>
+  <div class="categoria" data-categoria="camionetas">
+    <img src="images - copia/carro2.png" alt="Camionetas" />
+    <p>Camionetas</p>
+  </div>
+  <div class="categoria" data-categoria="descapotable">
+    <img src="images - copia/carro1.png" alt="Descapotable" />
+    <p>Descapotable</p>
+  </div>
+</div>
+
+<div id="contenedor-autos" class="autos"></div>
+<script>
+const autosPorCategoria = {
+    familiar: [
+       { imagen: "images - copia/j28.png", nombre: "Audi A4", año: "2023", precio: "$904,900", velocidad: "210 km/h", fuerza: "248 HP", descripcion: "Audi A4 es pura elegancia, con un diseño exterior que se inspira en el espíritu deportivo de la legendaria tecnología quattro. " },
+
+        { imagen: "images - copia/j29.png", nombre: "Mercedes-Benz", año: "2022", precio: "$1,900,000", velocidad: "231 km/h", fuerza: "218 HP", descripcion: "Vehículo de lujo, mediano que se caracteriza por su alegancia, tecnología y rendimiento" },
+
+        { imagen: "images - copia/j30.png", nombre: "Honda City", año: "2024", precio: "$405,900", velocidad: "190 km/h", fuerza: "119 HP", descripcion: "El Honda City es un auto compacto de la marca japonesa Honda. Es un sedán subcompacto que se caracteriza por su eficiencia, calidad e innovación. " },
+
+        { imagen: "images - copia/j31.png", nombre: "Tata Nexon ", año: "2024", precio: "$10,500", velocidad: "157 km/h", fuerza: "275 HP", descripcion: "El Tata Nexon es un SUV crossover subcompacto fabricado por la empresa india Tata Motors. Es uno de los SUV compactos más dinámicos del mercado. " },
+    ],
+    furgoneta: [
+        { imagen: "images - copia/j24.png", nombre: "Ford Transit Custom Furgon", año: "2024", precio: "$30,900", velocidad: "180 km/h", fuerza: "175 HP", descripcion: "furgoneta de gran tamaño y un buen diseño, además de estar bien equipada y con bastantes asistentes de seguridad." },
+
+        { imagen: "images - copia/j25.png", nombre: "Peuge", año: "2022", precio: "$16,149,000", velocidad: "21.7 km/h", fuerza: "83 HP", descripcion: "Con una buena construcción exterior que da un aspecto sólido, ofrece un gran espacio de carga con una boca del maletero fácil de aprovechar." },
+
+        { imagen: "images - copia/j26.png", nombre: "Mercedes-Benz Vito Furgon", año: "2022", precio: "$75,500,000", velocidad: "170 km/h", fuerza: "163 HP", descripcion: "Es un furgón con un largo recorrido comercial, el cual avala su calidad a la hora de dar soluciones a cualquier sector profesional." },
+
+        { imagen: "images - copia/j27.png", nombre: "Opel Combo Furgón", año: "2023", precio: "$12,000,000", velocidad: "170 km/h", fuerza: "136 HP", descripcion: "vehículo comercial versátil y espacioso, con un diseño moderno y robusto." },
+    ],
+    todoterreno: [
+        { imagen: "images - copia/j1.png", nombre: "Jeep Wrangler", año: "2017", precio: "$1,354,900,00", velocidad: "180 km/h", fuerza: "470 HP", descripcion: "Vehículo resistente para cualquier terreno." },
+
+        { imagen: "images - copia/j5.png", nombre: "Jeep Gladiator", año: "2021", precio: "$1,299,900,00", velocidad: "177 km/h", fuerza: "280 HP", descripcion: "El Jeep Gladiator es una pickup todoterreno basada en el Wrangler, con diseño robusto, techo y puertas desmontables, y una caja de carga de 1.5 metros." },
+
+        { imagen: "images - copia/j10.png", nombre: "Toyota Cruiser", año: "2022", precio: "$1,799,900,00", velocidad: "175 km/h", fuerza: "326 HP", descripcion: "Está inspirado en el clásico Toyota Land Cruiser FJ40, con un diseño retro y capacidades off-road destacadas." },
+
+        { imagen: "images - copia/j11.png", nombre: "Toyota Hilux", año: "2015", precio: "$542,200,00", velocidad: "195 km/h", fuerza: "500 HP", descripcion: "La Toyota Hilux es una pickup reconocida mundialmente por su durabilidad, resistencia y versatilidad, ideal tanto para trabajo pesado como para aventuras todoterreno." },
+
+        { imagen: "images - copia/j12.png", nombre: "Classic Ford Broncos", año: "2021", precio: "$1,300,00", velocidad: "147 km/h", fuerza: "105 HP", descripcion: "Conservan el diseño icónico original, pero incorporan mejoras en motor, suspensión, interiores y tecnología, ofreciendo un equilibrio perfecto entre estilo clásico y rendimiento moderno." },
+
+        { imagen: "images - copia/j13.png", nombre: "Toyota Tundra", año: "2023", precio: "$1,444,500", velocidad: "180 km/h", fuerza: "358 HP", descripcion: "Diseñada con una pontencia inigualable, equipada con caracteristicas de capacidad avansadas y llenas de comodidad." },
+
+        { imagen: "images - copia/j14.png", nombre: "Buggies", año: "2023", precio: "$992,000", velocidad: "70 km/h", fuerza: "750 HP", descripcion: "Vehículo todo terreno con ruedas grandes carroseria abierta y chasis ligero." },
+
+        { imagen: "images - copia/j15.png", nombre: "Silverado", año: "2023", precio: "$992,000", velocidad: "70 km/h", fuerza: "750 HP", descripcion: "Vehículo todo terreno con ruedas grandes carroseria abierta y chasis ligero." },
+    ],
+    camionetas:  [
+        { imagen: "images - copia/j16.png", nombre: "Toyota Rava Prime", año: "2022", precio: "$40,000", velocidad: "180 km/h", fuerza: "230 HP", descripcion: "Es un vehículo multiusos que caracteriza por su potencia, rendimiento, capacidad y comodidad." },
+
+        { imagen: "images - copia/j17.png", nombre: "Chevrolet Blazer", año: "2020", precio: "$469,750", velocidad: "210 km/h", fuerza: "308 HP", descripcion: "Cuenta con una transmision automatica de 9 velocidades y un diseño aerodinamico." },
+
+        { imagen: "images - copia/j18.png", nombre: "Ford Maverick", año: "2021", precio: "$25,000", velocidad: "200 km/h", fuerza: "140 HP", descripcion: "Es un vehículo compacto fabricado y comercializado originalmente." },
+
+        { imagen: "images - copia/j19.png", nombre: "Kia Sorento", año: "2023", precio: "$821,900", velocidad: "200 km/h", fuerza: "191 HP", descripcion: "El Kia Sorentoes un SUV de lujo con un diseño robusto y dinamico" },
+
+        { imagen: "images - copia/j20.png", nombre: "Ford Super Duty", año: "2022", precio: "$25,000", velocidad: "200 km/h", fuerza: "140 HP", descripcion: "Ford Super Duty es una camioneta robusta y versatil, diseñada para trabajos pesados." },
+
+        { imagen: "images - copia/j21.png", nombre: "Honda CR-V", año: "2002", precio: "$202,999", velocidad: "200 km/h", fuerza: "188 HP", descripcion: "Honda CR-V es la única SUV en su categoría que cuenta con 10 bolsas de aire. Además, viajarás como un líder, con confianza y tranquilidad gracias al avanzado equipamiento de seguridad Honda." },
+
+        { imagen: "images - copia/j22.png", nombre: "Hyundai Tucson", año: "2021", precio: "$25,000", velocidad: "200 km/h", fuerza: "140 HP", descripcion: "El Hyundai Tucson es un SUV compacto que se caracteriza por su diseño dinámico, tecnología avanzada y confort." },
+
+        { imagen: "images - copia/j23.png", nombre: "Mazda-CX-3", año: "2022", precio: "$25,000", velocidad: "200 km/h", fuerza: "140 HP", descripcion: "El Mazda CX-3 es un SUV compacto con motor delantero transversal, tracción delantera o a las cuatro ruedas." },
+    ],
+     descapotable: [
+       { imagen: "images - copia/j32.png", nombre: "Mini Cooper", año: "2024", precio: "$849,000", velocidad: "234 km/h", fuerza: "161 HP", descripcion: "Este es un auto deportivo de tamaño pequeño con un diseño inconfundible y un manejo ágil." },
+    ],
+};
+
+function mostrarAutos(categoria) {
+  const contenedor = document.getElementById("contenedor-autos");
+  contenedor.innerHTML = "";
+
+  if (!autosPorCategoria[categoria]) return;
+
+  autosPorCategoria[categoria].forEach(auto => {
+    const div = document.createElement("div");
+    div.classList.add("auto");
+    div.innerHTML = `
+      <img src="${auto.imagen}" alt="${auto.nombre}" />
+      <h3>${auto.nombre}</h3>
+      <p><strong>Año:</strong> ${auto.año}</p>
+      <p><strong>Precio:</strong> ${auto.precio}</p>
+      <p><strong>Velocidad Máxima:</strong> ${auto.velocidad}</p>
+      <p><strong>Fuerza:</strong> ${auto.fuerza}</p>
+      <p><strong>Descripción:</strong> ${auto.descripcion}</p>
+      <button class="btn-comprar">Comprar</button>`;
+    contenedor.appendChild(div);
+  });
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelectorAll(".categoria").forEach(item => {
+    item.addEventListener("click", function () {
+      const categoria = this.getAttribute("data-categoria");
+      mostrarAutos(categoria);
+    });
+  });
+
+  // Eventos para modal
+  document.addEventListener("click", function (event) {
+    if (event.target.classList.contains("btn-comprar")) {
+      document.getElementById("modal-compra").style.display = "flex";
+    }
+    if (event.target.classList.contains("cerrar")) {
+      document.getElementById("modal-compra").style.display = "none";
+    }
+  });
+
+  window.addEventListener("click", function (event) {
+    const modal = document.getElementById("modal-compra");
+    if (event.target === modal) {
+      modal.style.display = "none";
+    }
+  });
+  document.getElementById("formulario-compra").addEventListener("submit", function (e) {
+    e.preventDefault();
+    alert("¡Compra confirmada! Pronto nos comunicaremos contigo.");
+    document.getElementById("modal-compra").style.display = "none";
+  });
+});
+</script>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="redes">
+    <a href="https://www.tiktok.com/@yossealv3?lang=es" target="_blank">
+      <img src="images - copia/tiktok.png" alt="TikTok" class="redes-icono" /> TikTok
+    </a>
+    <a href="https://www.instagram.com/ortiz_8y8/" target="_blank">
+      <img src="images - copia/instagram.png" alt="Instagram" class="redes-icono" /> Instagram
+    </a>
+    <a href="https://x.com/MAXICAR880" target="_blank">
+      <img src="images - copia/X.png" alt="X" class="redes-icono" /> X
+    </a>
+  </div>
+</footer>
+
+</body>
+</html>
